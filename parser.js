@@ -6,9 +6,9 @@ function parse (tokens) {
     return new classes.Id(tokens[0])
   }
 
-  // FUNCTION
+  // ABSTRACTION
   if (tokens[0] === 'lambda') {
-    return new classes.Function(parse([tokens[1]]), parse(tokens.slice(3, tokens.length)))
+    return new classes.Abstraction(parse([tokens[1]]), parse(tokens.slice(3, tokens.length)))
   }
 
   // ASSIGNMENT
@@ -43,7 +43,7 @@ function parse (tokens) {
 
     if (depth === 0) {
 
-      // if we haven't found a function
+      // if we haven't found an abstraction
       if (!foundLambda) {
 
         // if current item exists, push

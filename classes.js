@@ -104,7 +104,7 @@ class Application {
     this.scope = {...scope}
     this.abstraction = this.abstraction.run(this.scope)
     this.abstraction.scope[this.abstraction.argument.name] = this.argument.run(this.scope)
-    this.abstraction.scope = {...this.abstraction.scope, ...this.scope}
+    this.abstraction.scope = {...this.scope, ...this.abstraction.scope}
     return this.abstraction.expression.run(this.abstraction.scope)
   }
 

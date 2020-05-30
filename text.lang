@@ -1,2 +1,6 @@
 true = lambda x. lambda y. x
 false = lambda x. lambda y. y
+
+and = lambda x. lambda y. x y false
+
+main = and true true

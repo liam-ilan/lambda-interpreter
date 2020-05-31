@@ -78,6 +78,11 @@ function parse (tokens) {
     return parse(items[0])
   }
 
+  // surround each item in parentheses
+  items = items.map((item) => {
+    return ['(', ...item, ')']
+  })
+
   // create new application
   return new classes.Application(
     parse(items.slice(0, items.length - 1).reduce((acc, item) => [...acc, ...item])), 

@@ -39,9 +39,8 @@ const tokenTable = [
 
 // returns list of tokens
 function lex(str) {
-
   // res
-  let res = new Array()
+  let res = []
 
   // taken = indexes to ignore
   let taken = []

@@ -1,6 +1,8 @@
 true = lambda x. lambda y. x
 false = lambda x. lambda y. y
 
-and = lambda x. lambda y. x y false
+not = lambda x. x false true
 
-main = and true true
+xor = lambda x. lambda y. x (not y) y
+
+main = xor false false

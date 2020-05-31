@@ -21,4 +21,3 @@ console.log(JSON.stringify(ast, null, 2))
 console.log('---------------------------------- RUN ----------------------------------')
 let scope = {}
 ast.run(scope)
-// console.log(JSON.stringify(scope, null, 2))

@@ -34,6 +34,7 @@ class Assignment {
   run (scope) {
     this.scope = {...scope}
     this.scope[this.id.name] = this.expression.run(this.scope)
+
     if (this.id.name === 'main') {
       console.log(this.scope[this.id.name].print())
     }
@@ -62,10 +63,7 @@ class Abstraction {
   }
 
   print () {
-    let id = this.argument.name
-    let expression = this.expression.print()
-
-    return `λ ${id}. ${expression}`
+    return `(lambda ${this.argument.print()}. ${this.expression.print()})`
   }
 }
 
@@ -91,8 +89,11 @@ class Id {
 }
 
 /*
-  
+  Application class
+  Has an abstraction and argument
+  Should build the propper scope, and run the abstractions expression on that scope
 */
+
 class Application {
   constructor (abstraction, argument) {
     this.abstraction = abstraction
@@ -105,11 +106,12 @@ class Application {
     this.abstraction = this.abstraction.run(this.scope)
     this.abstraction.scope[this.abstraction.argument.name] = this.argument.run(this.scope)
     this.abstraction.scope = {...this.scope, ...this.abstraction.scope}
+
     return this.abstraction.expression.run(this.abstraction.scope)
   }
 
   print () {
-    return `${this.abstraction.print()} ${this.expression.print()}`
+    return `(${this.abstraction.print()} ${this.argument.print()})`
   }
 }
 

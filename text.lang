@@ -1,8 +1,24 @@
+zero = lambda f. lambda x. x
+one = lambda f. lambda x. (f x)
+two = lambda f. lambda x. (f (f x))
+three = lambda f. lambda x. (f (f (f x)))
+four = lambda f. lambda x. (f (f (f (f x))))
+five = lambda f. lambda x. (f (f (f (f (f x)))))
+fifteen = lambda f. lambda x. (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f x)))))))))))))))
+hundred = lambda f. lambda x. (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f x))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+
 true = lambda x. lambda y. x
 false = lambda x. lambda y. y
 
-not = lambda x. x false true
+if = lambda condition. lambda then. lambda else. condition then else
+iszero = lambda n. n (lambda x. false) true
 
-xor = lambda x. lambda y. x (not y) y
+inc = lambda n. lambda f. lambda x. f (n f x)
+dec = lambda n. lambda f. lambda x. n (lambda g. lambda h. h (g f)) (lambda u. x) (lambda u. u)
 
-main = xor false false
+add = lambda m. lambda n. n inc m
+sub = lambda m. lambda n. n dec m
+
+
+main = add fifteen hundred
+main = fifteen inc hundred
